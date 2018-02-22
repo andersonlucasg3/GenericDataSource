@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  GenericDataSource
+//  GenericDataSourceTests
 //
-//  Created by Helena Leitão on 16/02/2018.
+//  Created by Anderson Lucas de Castro Ramos on 22/02/2018.
 //  Copyright © 2018 Teste. All rights reserved.
 //
 
