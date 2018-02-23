@@ -8,19 +8,18 @@
 
 import Foundation
 
-protocol CellSetupable : class {
-    func setup(withAny any: Any)
+public protocol CellSetupable : class {
+    func configure(withAny any: Any)
 }
 
-public protocol Setupable {
+public protocol Setupable : CellSetupable {
     associatedtype DataType
     
     func setup(with data: DataType)
 }
 
 public extension Setupable {
-    func setup(withAny any: Any) {
+    func configure(withAny any: Any) {
         self.setup(with: any as! Self.DataType)
     }
 }
-

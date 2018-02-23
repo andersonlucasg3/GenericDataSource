@@ -19,10 +19,11 @@ open class GenericDataSource: NSObject, UITableViewDataSource {
         }
     }
     
-    public init(withProvider cellProvider: CellProvider, andTableView tableView: UITableView) {
+    public init(withProvider cellProvider: CellProvider, dataSource: DataSourceProtocol, andTableView tableView: UITableView) {
         super.init()
         self.tableView = tableView
         self.cellProvider = cellProvider
+        self.dataSource = dataSource
     }
     
     fileprivate func registerCells() {
@@ -45,7 +46,7 @@ open class GenericDataSource: NSObject, UITableViewDataSource {
         let type = self.cellProvider.cellType(for: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: type.reusableIdentifier, for: indexPath)
         let item: Any = self.dataSource.getItem(for: indexPath)
-        (cell as! CellSetupable).setup(withAny: item)
+        (cell as! CellSetupable).configure(withAny: item)
         return cell
     }
 }

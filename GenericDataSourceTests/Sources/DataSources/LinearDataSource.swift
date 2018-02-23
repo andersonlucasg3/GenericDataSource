@@ -10,7 +10,7 @@ import GenericDataSource
 
 class LinearDataSource: GenericDataSource, CellProvider {
     init(_ tableView: UITableView, _ dataSource: DataSource<String>) {
-        super.init(withProvider: self, andTableView: tableView)
+        super.init(withProvider: self, dataSource: dataSource, andTableView: tableView)
     }
     
     // MARK: CellProvider
