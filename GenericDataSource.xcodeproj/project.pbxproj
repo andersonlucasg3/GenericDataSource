@@ -15,6 +15,8 @@
 		71B1FF58203E70C400ECC965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF56203E70C400ECC965 /* LaunchScreen.storyboard */; };
 		71B1FF73203FB10E00ECC965 /* GenericDataSource.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF71203FB10E00ECC965 /* GenericDataSource.podspec */; };
 		71B1FF74203FB10E00ECC965 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF72203FB10E00ECC965 /* README.md */; };
+		71B1FF7C203FB2F100ECC965 /* LinearDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1FF7B203FB2F100ECC965 /* LinearDataSource.swift */; };
+		71B1FF7F203FB35900ECC965 /* LinearDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1FF7E203FB35900ECC965 /* LinearDataCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		71B1FF67203FAFDB00ECC965 /* ReusableIdentifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableIdentifierProtocol.swift; sourceTree = "<group>"; };
 		71B1FF71203FB10E00ECC965 /* GenericDataSource.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GenericDataSource.podspec; sourceTree = "<group>"; };
 		71B1FF72203FB10E00ECC965 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		71B1FF7B203FB2F100ECC965 /* LinearDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearDataSource.swift; sourceTree = "<group>"; };
+		71B1FF7E203FB35900ECC965 /* LinearDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearDataCell.swift; sourceTree = "<group>"; };
 		8CB44AA9310C3FF8EEC51310 /* Pods-GenericDataSourceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericDataSourceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GenericDataSourceTests/Pods-GenericDataSourceTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1955CD3011AEB35C90A3BEB /* Pods-GenericDataSourceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericDataSourceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GenericDataSourceTests/Pods-GenericDataSourceTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,12 +67,9 @@
 		71B1FF4C203E70C400ECC965 /* GenericDataSourceTests */ = {
 			isa = PBXGroup;
 			children = (
-				71B1FF4D203E70C400ECC965 /* AppDelegate.swift */,
-				71B1FF4F203E70C400ECC965 /* ViewController.swift */,
-				71B1FF51203E70C400ECC965 /* Main.storyboard */,
-				71B1FF54203E70C400ECC965 /* Assets.xcassets */,
-				71B1FF56203E70C400ECC965 /* LaunchScreen.storyboard */,
-				71B1FF59203E70C400ECC965 /* Info.plist */,
+				71B1FF78203FB27400ECC965 /* Sources */,
+				71B1FF76203FB24A00ECC965 /* Resources */,
+				71B1FF79203FB28000ECC965 /* Supporting Files */,
 			);
 			path = GenericDataSourceTests;
 			sourceTree = "<group>";
@@ -88,6 +89,67 @@
 				71B1FF72203FB10E00ECC965 /* README.md */,
 			);
 			name = Spec;
+			sourceTree = "<group>";
+		};
+		71B1FF75203FB24200ECC965 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				71B1FF4F203E70C400ECC965 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		71B1FF76203FB24A00ECC965 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				71B1FF77203FB25800ECC965 /* Storyboards */,
+				71B1FF54203E70C400ECC965 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		71B1FF77203FB25800ECC965 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				71B1FF56203E70C400ECC965 /* LaunchScreen.storyboard */,
+				71B1FF51203E70C400ECC965 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		71B1FF78203FB27400ECC965 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				71B1FF7D203FB34B00ECC965 /* Cells */,
+				71B1FF75203FB24200ECC965 /* Controllers */,
+				71B1FF7A203FB2E000ECC965 /* DataSources */,
+				71B1FF4D203E70C400ECC965 /* AppDelegate.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		71B1FF79203FB28000ECC965 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				71B1FF59203E70C400ECC965 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		71B1FF7A203FB2E000ECC965 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				71B1FF7B203FB2F100ECC965 /* LinearDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		71B1FF7D203FB34B00ECC965 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				71B1FF7E203FB35900ECC965 /* LinearDataCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F60A4B5320373D3D0058DA9F = {
@@ -255,8 +317,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71B1FF7F203FB35900ECC965 /* LinearDataCell.swift in Sources */,
 				71B1FF50203E70C400ECC965 /* ViewController.swift in Sources */,
 				71B1FF4E203E70C400ECC965 /* AppDelegate.swift in Sources */,
+				71B1FF7C203FB2F100ECC965 /* LinearDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EUPS925RGY;
-				INFOPLIST_FILE = GenericDataSourceTests/Info.plist;
+				INFOPLIST_FILE = "GenericDataSourceTests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.insanitech.GenericDataSourceTests;
@@ -306,7 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EUPS925RGY;
-				INFOPLIST_FILE = GenericDataSourceTests/Info.plist;
+				INFOPLIST_FILE = "GenericDataSourceTests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.insanitech.GenericDataSourceTests;

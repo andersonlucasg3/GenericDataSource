@@ -17,6 +17,10 @@ public protocol DataSourceProtocol {
 open class DataSource<DataType>: DataSourceProtocol {
     public var items: [DataType]!
     
+    public init() {
+        
+    }
+    
     open func getSectionCount() -> Int {
         return 1
     }

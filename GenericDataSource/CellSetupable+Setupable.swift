@@ -8,11 +8,11 @@
 
 import Foundation
 
-public protocol CellSetupable : class {
+protocol CellSetupable : class {
     func setup(withAny any: Any)
 }
 
-public protocol Setupable : CellSetupable {
+public protocol Setupable {
     associatedtype DataType
     
     func setup(with data: DataType)
