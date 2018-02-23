@@ -1,0 +1,16 @@
+PODS:
+  - GenericDataSource (0.1.0)
+
+DEPENDENCIES:
+  - GenericDataSource (from `./`)
+
+EXTERNAL SOURCES:
+  GenericDataSource:
+    :path: ./
+
+SPEC CHECKSUMS:
+  GenericDataSource: 0c5e9f18f66d05323e742de45252ff22c1ca5baf
+
+PODFILE CHECKSUM: 27810aa056821c45354da53ed1097f20c79905c1
+
+COCOAPODS: 1.4.0
