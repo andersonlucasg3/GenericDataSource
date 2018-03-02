@@ -8,5 +8,6 @@
 
 import UIKit
 
+extension UITableViewHeaderFooterView: ReusableIdentifierProtocol { }
 extension UITableViewCell: ReusableIdentifierProtocol { }
-extension UICollectionViewCell: ReusableIdentifierProtocol { }
+extension UICollectionReusableView: ReusableIdentifierProtocol { }
