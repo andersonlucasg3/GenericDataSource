@@ -9,9 +9,8 @@
 import Foundation
 
 public protocol DataSourceProtocol {
-    func getSectionCount() -> Int
-    func getItemCount(for section: Int) -> Int
-    func getItem<T>(for indexPath: IndexPath) -> T
+    func getItemCount() -> Int
+    func getItem<T>(for index: Int) -> T
 }
 
 open class DataSource<DataType>: DataSourceProtocol {
@@ -21,45 +20,11 @@ open class DataSource<DataType>: DataSourceProtocol {
         
     }
     
-    open func getSectionCount() -> Int {
-        return 1
-    }
-    
-    open func getItemCount(for section: Int) -> Int {
+    open func getItemCount() -> Int {
         return self.items.count
     }
     
-    open func getItem<T>(for indexPath: IndexPath) -> T {
-        return self.items![indexPath.row] as! T
-    }
-}
-
-open class ArraySectionDataSource<T> : DataSource<Array<T>> {
-    open override func getSectionCount() -> Int {
-        return self.items.count
-    }
-    
-    open override func getItemCount(for section: Int) -> Int {
-        return self.items[section].count
-    }
-    
-    open override func getItem<T>(for indexPath: IndexPath) -> T {
-        return self.items[indexPath.section][indexPath.row] as! T
-    }
-}
-
-open class DictionarySectionDataSource<K: Hashable, T> : ArraySectionDataSource<Array<T>> {
-    public var sections: Array<K>!
-    
-    open override func getSectionCount() -> Int {
-        return self.sections.count
-    }
-    
-    open override func getItemCount(for section: Int) -> Int {
-        return self.items[section].count
-    }
-    
-    open override func getItem<T>(for indexPath: IndexPath) -> T {
-        return self.items[indexPath.section][indexPath.row] as! T
+    open func getItem<T>(for index: Int) -> T {
+        return self.items![index] as! T
     }
 }
