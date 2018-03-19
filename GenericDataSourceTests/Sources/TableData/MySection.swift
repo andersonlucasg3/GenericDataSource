@@ -22,6 +22,6 @@ class MySection: Section {
     }
     
     func footerHeight() -> CGFloat {
-        return 40
+        return self.footer != nil ? 40 : 0
     }
 }

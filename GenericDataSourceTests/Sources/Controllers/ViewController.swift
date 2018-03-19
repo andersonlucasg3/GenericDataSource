@@ -14,7 +14,7 @@ let linearDataSourceWithDifferentCellsTestName = "Linear DataSource with Differe
 let arraySectionDataSourceTestName = "Array Section DataSource"
 let dictionarySectionDataSourceTestName = "Dictionary Section DataSource"
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GenericDelegateDataSourceProtocol {
     @IBOutlet fileprivate weak var tableView: UITableView!
     
     fileprivate var sections: [Section]!
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
             dictionarySectionDataSourceTestName
         ]
         return [
-            MySection(title: "Section 1", footer: "Footer 1", dataSource: dataSource),
+            MySection(title: "Section 1", dataSource: dataSource),
             MySection(title: "Section 2", footer: "Footer 2", dataSource: dataSource)
         ]
     }
@@ -49,6 +49,12 @@ class ViewController: UIViewController {
     fileprivate func setupDataSource() {
         self.tableView.delegate = self.tableViewDataSource
         self.tableView.dataSource = self.tableViewDataSource
+        self.tableViewDataSource.delegate = self
+    }
+    
+    func didSelectItem(at indexPath: IndexPath) {
+        let item: String = self.sections[indexPath.section].getItem(for: indexPath.row)
+        self.didSelectItem(item)
     }
     
     fileprivate func didSelectItem(_ item: String) {

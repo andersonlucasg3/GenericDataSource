@@ -8,10 +8,16 @@
 
 import UIKit
 
+public protocol GenericDelegateDataSourceProtocol: class {    
+    func didSelectItem(at indexPath: IndexPath)
+}
+
 open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     fileprivate(set) weak var tableView: UITableView!
     
     public var sections: [SectionProtocol]!
+    
+    public weak var delegate: GenericDelegateDataSourceProtocol?
     
     public init(withSections sections: [SectionProtocol], andTableView tableView: UITableView) {
         super.init()
@@ -51,6 +57,10 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: type.reusableIdentifier, for: indexPath)
         (cell as! CellSetupable).configure(withAny: item)
         return cell
+    }
+    
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.didSelectItem(at: indexPath)
     }
     
     // MARK: Header methods
