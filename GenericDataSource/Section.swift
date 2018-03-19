@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public protocol SectionProtocol {
+@objc public protocol SectionProtocol: class {
     var title: String? { get set }
     var footer: String? { get set }
     
@@ -56,6 +56,10 @@ open class Section : SectionProtocol {
     
     public func itemCount() -> Int {
         return self.dataSource.getItemCount()
+    }
+    
+    public func itemTypeIs(type: Any.Type) -> Bool {
+        return self.dataSource.itemType() == type
     }
     
     public func getItem<T>(for index: Int) -> T {

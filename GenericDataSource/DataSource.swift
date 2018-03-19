@@ -11,6 +11,7 @@ import Foundation
 public protocol DataSourceProtocol {
     func getItemCount() -> Int
     func getItem<T>(for index: Int) -> T
+    func itemType() -> Any.Type
 }
 
 open class DataSource<DataType>: DataSourceProtocol {
@@ -18,6 +19,10 @@ open class DataSource<DataType>: DataSourceProtocol {
     
     public init() {
         
+    }
+    
+    public func itemType() -> Any.Type {
+        return DataType.self
     }
     
     open func getItemCount() -> Int {

@@ -53,8 +53,10 @@ class ViewController: UIViewController, GenericDelegateDataSourceProtocol {
     }
     
     func didSelectItem(at indexPath: IndexPath) {
-        let item: String = self.sections[indexPath.section].getItem(for: indexPath.row)
-        self.didSelectItem(item)
+        if self.sections[indexPath.section].itemTypeIs(type: String.self) {
+            let item: String = self.sections[indexPath.section].getItem(for: indexPath.row)
+            self.didSelectItem(item)
+        }
     }
     
     fileprivate func didSelectItem(_ item: String) {
