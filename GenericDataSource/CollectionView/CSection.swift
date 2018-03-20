@@ -11,29 +11,31 @@ import UIKit
 
 
 public protocol CSectionProtocol: class {
-    //MARL:Required Methods
+    //MARK:Required Methods
     func itemCount() -> Int
     func getItem<T>(for index: Int) -> T
     
     func cellType(for index: Int) -> UICollectionViewCell.Type
+    //Still need to convert that shit to CollectionView paradigm
     func cellHeight(for index: Int) -> CGFloat
     func estimatedCellHeight(for index: Int) -> CGFloat
     
     
-    //Optional Methods:
-    func headerType() -> UICollectionReusableView.Type
+    //MARK: Optional Methods:
+    func headerType() -> UICollectionReusableView.Type?
     func headerHeight() -> CGFloat
     func estimatedHeaderHeight() -> CGFloat
     
-    func footerType() -> UICollectionReusableView.Type
+    func footerType() -> UICollectionReusableView.Type?
     func footerHeight() -> CGFloat
     func estimatedFooterHeight() -> CGFloat
     
 }
 
+//MARK: Optional Methods implementation
 extension CSectionProtocol {
-    public func headerType() -> UICollectionReusableView.Type {
-        return UICollectionReusableView.self
+    public func headerType() -> UICollectionReusableView.Type? {
+        return nil
     }
     public func headerHeight() -> CGFloat {
         return 0
@@ -42,8 +44,8 @@ extension CSectionProtocol {
         return 0
     }
     
-    public func footerType() -> UICollectionReusableView.Type {
-        return UICollectionReusableView.self
+    public func footerType() -> UICollectionReusableView.Type? {
+        return nil
     }
     public func footerHeight() -> CGFloat {
         return 0
@@ -56,15 +58,10 @@ extension CSectionProtocol {
 open class CSection : CSectionProtocol {
     fileprivate var dataSource: DataSourceProtocol
     
-    public var title: String?
-    public var footer: String?
-    
     public var headerObject: Any?
     public var footerObject: Any?
     
-    public init(title: String? = nil, footer: String? = nil, dataSource: DataSourceProtocol) {
-        self.title = title
-        self.footer = footer
+    public init(dataSource: DataSourceProtocol) {
         self.dataSource = dataSource
     }
     
