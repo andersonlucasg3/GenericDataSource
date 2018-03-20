@@ -11,3 +11,4 @@ import UIKit
 extension UITableViewHeaderFooterView: ReusableIdentifierProtocol { }
 extension UITableViewCell: ReusableIdentifierProtocol { }
 extension UICollectionReusableView: ReusableIdentifierProtocol { }
+extension UICollectionViewCell: ReusableIdentifierProtocol { }
