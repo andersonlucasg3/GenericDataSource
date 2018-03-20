@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D717461232E25594C7FF6BB /* Pods_GenericDataSourceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E31E5D131A55560D4C9AF5 /* Pods_GenericDataSourceTests.framework */; };
-		71369AEA204900BE00613F99 /* MySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71369AE9204900BE00613F99 /* MySection.swift */; };
 		71B1FF4E203E70C400ECC965 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1FF4D203E70C400ECC965 /* AppDelegate.swift */; };
 		71B1FF50203E70C400ECC965 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1FF4F203E70C400ECC965 /* ViewController.swift */; };
 		71B1FF53203E70C400ECC965 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF51203E70C400ECC965 /* Main.storyboard */; };
@@ -17,6 +16,7 @@
 		71B1FF73203FB10E00ECC965 /* GenericDataSource.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF71203FB10E00ECC965 /* GenericDataSource.podspec */; };
 		71B1FF74203FB10E00ECC965 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF72203FB10E00ECC965 /* README.md */; };
 		71B1FF7F203FB35900ECC965 /* LinearDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1FF7E203FB35900ECC965 /* LinearDataCell.swift */; };
+		8E31114E206133180095298A /* MySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71369AE9204900BE00613F99 /* MySection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +40,8 @@
 		71B1FF72203FB10E00ECC965 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		71B1FF7E203FB35900ECC965 /* LinearDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearDataCell.swift; sourceTree = "<group>"; };
 		8CB44AA9310C3FF8EEC51310 /* Pods-GenericDataSourceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericDataSourceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GenericDataSourceTests/Pods-GenericDataSourceTests.release.xcconfig"; sourceTree = "<group>"; };
+		8E31114A20612F400095298A /* CGenericDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGenericDelegateDataSource.swift; path = GenericDataSource/CollectionView/CGenericDelegateDataSource.swift; sourceTree = SOURCE_ROOT; };
+		8E31114B20612F400095298A /* CSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSection.swift; path = GenericDataSource/CollectionView/CSection.swift; sourceTree = SOURCE_ROOT; };
 		E1955CD3011AEB35C90A3BEB /* Pods-GenericDataSourceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericDataSourceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GenericDataSourceTests/Pods-GenericDataSourceTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,24 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		8E31114820612EFC0095298A /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				71369AE62048F4C800613F99 /* Section.swift */,
+				71B1FF66203FAFDB00ECC965 /* GenericDelegateDataSource.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		8E31114920612F090095298A /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				8E31114B20612F400095298A /* CSection.swift */,
+				8E31114A20612F400095298A /* CGenericDelegateDataSource.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		F60A4B5320373D3D0058DA9F = {
 			isa = PBXGroup;
 			children = (
@@ -175,13 +195,13 @@
 		F60A4B5E20373D3D0058DA9F /* GenericDataSource */ = {
 			isa = PBXGroup;
 			children = (
+				8E31114920612F090095298A /* CollectionView */,
+				8E31114820612EFC0095298A /* TableView */,
 				71B1FF64203FAFDB00ECC965 /* Cells+Extensions.swift */,
 				71B1FF63203FAFDB00ECC965 /* CellSetupable+Setupable.swift */,
 				71B1FF62203FAFDB00ECC965 /* DataSource.swift */,
-				71B1FF66203FAFDB00ECC965 /* GenericDelegateDataSource.swift */,
 				71B1FF65203FAFDB00ECC965 /* NSObjectProtocol+Extensions.swift */,
 				71B1FF67203FAFDB00ECC965 /* ReusableIdentifierProtocol.swift */,
-				71369AE62048F4C800613F99 /* Section.swift */,
 			);
 			path = GenericDataSource;
 			sourceTree = "<group>";
@@ -318,7 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71B1FF7F203FB35900ECC965 /* LinearDataCell.swift in Sources */,
-				71369AEA204900BE00613F99 /* MySection.swift in Sources */,
+				8E31114E206133180095298A /* MySection.swift in Sources */,
 				71B1FF50203E70C400ECC965 /* ViewController.swift in Sources */,
 				71B1FF4E203E70C400ECC965 /* AppDelegate.swift in Sources */,
 			);

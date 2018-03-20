@@ -16,31 +16,12 @@
 
 import UIKit
 
-
-@objc public protocol CSectionProtocol: class {
-    @objc optional func headerType() -> UICollectionReusableView.Type
-    @objc optional func headerHeight() -> CGFloat
-    @objc optional func estimatedHeaderHeight() -> CGFloat
-    
-    @objc optional func footerType() -> UICollectionReusableView.Type
-    @objc optional func footerHeight() -> CGFloat
-    @objc optional func estimatedFooterHeight() -> CGFloat
-    
-    func itemCount() -> Int
-    
-    func cellType(for index: Int) -> UICollectionViewCell.Type
-    func cellHeight(for index: Int) -> CGFloat
-    func estimatedCellHeight(for index: Int) -> CGFloat
-    
-    func getItem<T>() -> T?
-}
-
 open class CGenericDelegateDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     fileprivate(set) weak var collectionView: UICollectionView!
     
     public var sections: [CSectionProtocol]!
     
-    public weak var delegate: GenericDelegateDataSourceProtocol?
+//    public weak var delegate: GenericDelegateDataSourceProtocol?
     
     public init(collectionView: UICollectionView) {
         super.init()
@@ -70,7 +51,7 @@ open class CGenericDelegateDataSource: NSObject, UICollectionViewDataSource, UIC
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section = self.sections[indexPath.section]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: section.cellType(for: indexPath.row).className, for: indexPath)
-        if let item: Any = section.getItem() {
+        if let item: Any = section.getItem(for: indexPath.row) {
             (cell as? CellSetupable)?.configure(withAny: item)
         }
         return cell
