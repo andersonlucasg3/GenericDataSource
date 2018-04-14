@@ -36,7 +36,7 @@
 		71B1FF65203FAFDB00ECC965 /* NSObjectProtocol+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObjectProtocol+Extensions.swift"; sourceTree = "<group>"; };
 		71B1FF66203FAFDB00ECC965 /* GenericDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericDelegateDataSource.swift; sourceTree = "<group>"; };
 		71B1FF67203FAFDB00ECC965 /* ReusableIdentifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableIdentifierProtocol.swift; sourceTree = "<group>"; };
-		71B1FF71203FB10E00ECC965 /* GenericDataSource.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GenericDataSource.podspec; sourceTree = "<group>"; };
+		71B1FF71203FB10E00ECC965 /* GenericDataSource.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GenericDataSource.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		71B1FF72203FB10E00ECC965 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		71B1FF7E203FB35900ECC965 /* LinearDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearDataCell.swift; sourceTree = "<group>"; };
 		8CB44AA9310C3FF8EEC51310 /* Pods-GenericDataSourceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericDataSourceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GenericDataSourceTests/Pods-GenericDataSourceTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,7 +218,6 @@
 				71B1FF48203E70C400ECC965 /* Frameworks */,
 				71B1FF49203E70C400ECC965 /* Resources */,
 				8A98EE3995DD9ECDA1BA2F16 /* [CP] Embed Pods Frameworks */,
-				79B1E47FBF01BB7009BE0EEA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,21 +294,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		79B1E47FBF01BB7009BE0EEA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GenericDataSourceTests/Pods-GenericDataSourceTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8A98EE3995DD9ECDA1BA2F16 /* [CP] Embed Pods Frameworks */ = {
