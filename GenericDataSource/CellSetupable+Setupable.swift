@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol CellSetupable : class {
-    func setup(withAny any: Any)
+    func configure(withAny any: Any)
 }
 
 public protocol Setupable : CellSetupable {
@@ -19,8 +19,7 @@ public protocol Setupable : CellSetupable {
 }
 
 public extension Setupable {
-    func setup(withAny any: Any) {
+    func configure(withAny any: Any) {
         self.setup(with: any as! Self.DataType)
     }
 }
-
