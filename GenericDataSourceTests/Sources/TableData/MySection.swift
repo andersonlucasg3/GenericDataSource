@@ -6,7 +6,7 @@
 //  Copyright © 2018 Teste. All rights reserved.
 //
 
-import GenericDataSource
+import GenericDataSourceSwift
 
 class MySection: Section {
     override func cellType(for index: Int) -> UITableViewCell.Type {

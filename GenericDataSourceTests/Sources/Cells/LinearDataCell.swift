@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GenericDataSource
+import GenericDataSourceSwift
 
 class LinearDataCell: UITableViewCell, Setupable {
     typealias DataType = String

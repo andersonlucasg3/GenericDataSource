@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GenericDataSource
+import GenericDataSourceSwift
 
 let linearDataSourceTestName = "Linear DataSource"
 let linearDataSourceWithDifferentCellsTestName = "Linear DataSource with Different Cells"
