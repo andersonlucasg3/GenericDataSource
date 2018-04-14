@@ -14,11 +14,11 @@ let linearDataSourceWithDifferentCellsTestName = "Linear DataSource with Differe
 let arraySectionDataSourceTestName = "Array Section DataSource"
 let dictionarySectionDataSourceTestName = "Dictionary Section DataSource"
 
-class ViewController: UIViewController, UITableViewDelegate {
+class ViewController: UIViewController, GenericDelegateDataSourceProtocol {
     @IBOutlet fileprivate weak var tableView: UITableView!
     
-    fileprivate let dataSource = DataSource<String>()
-    fileprivate lazy var tableViewDataSource = LinearDataSource(self.tableView, self.dataSource)
+    fileprivate var sections: [Section]!
+    fileprivate lazy var tableViewDataSource = GenericDelegateDataSource(withSections: self.sections, andTableView: self.tableView)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +28,35 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     fileprivate func setupItemsAndDataSource() {
-        self.dataSource.items = [
+        self.sections = self.createSections()
+        self.setupDataSource()
+    }
+    
+    fileprivate func createSections() -> [Section] {
+        let dataSource = DataSource<String>()
+        dataSource.items = [
             linearDataSourceTestName,
             linearDataSourceWithDifferentCellsTestName,
             arraySectionDataSourceTestName,
             dictionarySectionDataSourceTestName
         ]
-        self.setupDataSource()
+        return [
+            MySection(title: "Section 1", dataSource: dataSource),
+            MySection(title: "Section 2", footer: "Footer 2", dataSource: dataSource)
+        ]
     }
     
     fileprivate func setupDataSource() {
-        self.tableView.delegate = self
+        self.tableView.delegate = self.tableViewDataSource
         self.tableView.dataSource = self.tableViewDataSource
+        self.tableViewDataSource.delegate = self
+    }
+    
+    func didSelectItem(at indexPath: IndexPath) {
+        if self.sections[indexPath.section].itemTypeIs(type: String.self) {
+            let item: String = self.sections[indexPath.section].getItem(for: indexPath.row)
+            self.didSelectItem(item)
+        }
     }
     
     fileprivate func didSelectItem(_ item: String) {
@@ -59,12 +76,6 @@ class ViewController: UIViewController, UITableViewDelegate {
         default:
             assertionFailure("Test View Controller Not Implemented For Item: \(item)")
         }
-    }
-    
-    // MARK: UITableViewDelegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.didSelectItem(self.dataSource.getItem(for: indexPath))
     }
 }
 
