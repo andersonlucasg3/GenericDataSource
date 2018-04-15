@@ -13,7 +13,7 @@
 		71B1FF53203E70C400ECC965 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF51203E70C400ECC965 /* Main.storyboard */; };
 		71B1FF55203E70C400ECC965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF54203E70C400ECC965 /* Assets.xcassets */; };
 		71B1FF58203E70C400ECC965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF56203E70C400ECC965 /* LaunchScreen.storyboard */; };
-		71B1FF73203FB10E00ECC965 /* GenericDataSource.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF71203FB10E00ECC965 /* GenericDataSource.podspec */; };
+		71B1FF73203FB10E00ECC965 /* GenericDataSourceSwift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF71203FB10E00ECC965 /* GenericDataSourceSwift.podspec */; };
 		71B1FF74203FB10E00ECC965 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 71B1FF72203FB10E00ECC965 /* README.md */; };
 		71B1FF7F203FB35900ECC965 /* LinearDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1FF7E203FB35900ECC965 /* LinearDataCell.swift */; };
 		8E31114E206133180095298A /* MySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71369AE9204900BE00613F99 /* MySection.swift */; };
@@ -36,7 +36,7 @@
 		71B1FF65203FAFDB00ECC965 /* NSObjectProtocol+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObjectProtocol+Extensions.swift"; sourceTree = "<group>"; };
 		71B1FF66203FAFDB00ECC965 /* GenericDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericDelegateDataSource.swift; sourceTree = "<group>"; };
 		71B1FF67203FAFDB00ECC965 /* ReusableIdentifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableIdentifierProtocol.swift; sourceTree = "<group>"; };
-		71B1FF71203FB10E00ECC965 /* GenericDataSource.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GenericDataSource.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		71B1FF71203FB10E00ECC965 /* GenericDataSourceSwift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GenericDataSourceSwift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		71B1FF72203FB10E00ECC965 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		71B1FF7E203FB35900ECC965 /* LinearDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearDataCell.swift; sourceTree = "<group>"; };
 		8CB44AA9310C3FF8EEC51310 /* Pods-GenericDataSourceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericDataSourceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GenericDataSourceTests/Pods-GenericDataSourceTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		71B1FF70203FB0F900ECC965 /* Spec */ = {
 			isa = PBXGroup;
 			children = (
-				71B1FF71203FB10E00ECC965 /* GenericDataSource.podspec */,
+				71B1FF71203FB10E00ECC965 /* GenericDataSourceSwift.podspec */,
 				71B1FF72203FB10E00ECC965 /* README.md */,
 			);
 			name = Spec;
@@ -268,7 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71B1FF58203E70C400ECC965 /* LaunchScreen.storyboard in Resources */,
-				71B1FF73203FB10E00ECC965 /* GenericDataSource.podspec in Resources */,
+				71B1FF73203FB10E00ECC965 /* GenericDataSourceSwift.podspec in Resources */,
 				71B1FF74203FB10E00ECC965 /* README.md in Resources */,
 				71B1FF55203E70C400ECC965 /* Assets.xcassets in Resources */,
 				71B1FF53203E70C400ECC965 /* Main.storyboard in Resources */,
@@ -303,11 +303,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GenericDataSourceTests/Pods-GenericDataSourceTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GenericDataSource/GenericDataSource.framework",
+				"${BUILT_PRODUCTS_DIR}/GenericDataSourceSwift/GenericDataSourceSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GenericDataSource.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GenericDataSourceSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
