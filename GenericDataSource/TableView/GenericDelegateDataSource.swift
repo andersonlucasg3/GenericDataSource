@@ -23,19 +23,6 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
         super.init()
         self.tableView = tableView
         self.sections = sections
-        self.registerCells()
-    }
-    
-    fileprivate func registerCells() {
-        let set = NSMutableSet()
-        self.sections.forEach({
-            for i in 0..<$0.itemCount() {
-                set.add($0.cellType(for: i))
-            }
-        })
-        set.allObjects.map({$0 as! UITableViewCell.Type}).forEach({ [weak self] (item: UITableViewCell.Type) in
-            self?.tableView.register(item, forCellReuseIdentifier: item.reusableIdentifier)
-        })
     }
     
     // MARK: UITableViewDataSource
