@@ -15,16 +15,19 @@ import UIKit
     @objc optional func headerType() -> UITableViewHeaderFooterView.Type
     @objc optional func headerHeight() -> CGFloat
     @objc optional func estimatedHeaderHeight() -> CGFloat
+    @objc optional func headerPostConfiguration(for header: UITableViewHeaderFooterView, of section: Int)
     
     @objc optional func footerType() -> UITableViewHeaderFooterView.Type
     @objc optional func footerHeight() -> CGFloat
     @objc optional func estimatedFooterHeight() -> CGFloat
+    @objc optional func footerPostConfiguration(for footer: UITableViewHeaderFooterView, of section: Int)
  
     func itemCount() -> Int
     
     func cellType(for index: Int) -> UITableViewCell.Type
     func cellHeight(for index: Int) -> CGFloat
     func estimatedCellHeight(for index: Int) -> CGFloat
+    @objc optional func cellPostConfiguration(for cell: UITableViewCell, at indexPath: IndexPath)
 }
 
 open class Section : SectionProtocol {

@@ -43,6 +43,7 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: type.reusableIdentifier, for: indexPath)
         (cell as! CellSetupable).configure(withAny: item)
+        section.cellPostConfiguration?(for: cell, at: indexPath)
         return cell
     }
     
@@ -65,12 +66,15 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let section = self.sections[section]
-        guard let type = section.headerType?() else { return nil }
+        let sectionModel = self.sections[section]
+        guard let type = sectionModel.headerType?() else { return nil }
         
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: type.reusableIdentifier)
-        if let object = (section as! Section).headerObject {
+        if let object = (sectionModel as! Section).headerObject {
             (header as? CellSetupable)?.configure(withAny: object)
+            if let header = header {
+                sectionModel.headerPostConfiguration?(for: header, of: section)
+            }
         }
         return header
     }
@@ -90,12 +94,15 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
     }
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let section = self.sections[section]
-        guard let type = section.footerType?() else { return nil }
+        let sectionModel = self.sections[section]
+        guard let type = sectionModel.footerType?() else { return nil }
         
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: type.reusableIdentifier)
-        if let object = (section as! Section).footerObject {
+        if let object = (sectionModel as! Section).footerObject {
             (footer as? CellSetupable)?.configure(withAny: object)
+            if let footer = footer {
+                sectionModel.footerPostConfiguration?(for: footer, of: section)
+            }
         }
         return footer
     }
