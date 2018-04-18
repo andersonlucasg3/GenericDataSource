@@ -39,7 +39,7 @@ open class Section : SectionProtocol {
     public var headerObject: Any?
     public var footerObject: Any?
     
-    public init(title: String? = nil, footer: String? = nil, dataSource: DataSourceProtocol) {
+    public required init(title: String? = nil, footer: String? = nil, dataSource: DataSourceProtocol) {
         self.title = title
         self.footer = footer
         self.dataSource = dataSource
