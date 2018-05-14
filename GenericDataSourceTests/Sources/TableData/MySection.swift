@@ -17,11 +17,11 @@ class MySection: Section {
         return 40
     }
     
-    func headerHeight() -> CGFloat {
+    override func headerHeight() -> CGFloat? {
         return 20
     }
     
-    func footerHeight() -> CGFloat {
+    override func footerHeight() -> CGFloat? {
         return self.footer != nil ? 40 : 0
     }
 }
