@@ -43,7 +43,7 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: type.reusableIdentifier, for: indexPath)
         (cell as! CellSetupable).configure(withAny: item)
-        section.cellPostConfiguration?(for: cell, at: indexPath)
+        section.cellPostConfiguration(for: cell, at: indexPath)
         return cell
     }
     
@@ -53,27 +53,27 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
     
     // MARK: Header methods
     
-    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sections[section].title
     }
     
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.sections[section].headerHeight?() ?? 0
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.sections[section].headerHeight() ?? 0
     }
     
-    public func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return self.sections[section].estimatedHeaderHeight?() ?? self.tableView(tableView, heightForHeaderInSection: section)
+    open func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return self.sections[section].estimatedHeaderHeight() ?? self.tableView(tableView, heightForHeaderInSection: section)
     }
     
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionModel = self.sections[section]
-        guard let type = sectionModel.headerType?() else { return nil }
+        guard let type = sectionModel.headerType() else { return nil }
         
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: type.reusableIdentifier)
         if let object = (sectionModel as! Section).headerObject {
             (header as? CellSetupable)?.configure(withAny: object)
             if let header = header {
-                sectionModel.headerPostConfiguration?(for: header, of: section)
+                sectionModel.headerPostConfiguration(for: header, of: section)
             }
         }
         return header
@@ -81,27 +81,27 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
     
     // MARK: Footer methods
     
-    public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return self.sections[section].footer
     }
     
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return self.sections[section].footerHeight?() ?? 0
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return self.sections[section].footerHeight() ?? 0
     }
     
-    public func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        return self.sections[section].estimatedFooterHeight?() ?? self.tableView(tableView, heightForFooterInSection: section)
+    open func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return self.sections[section].estimatedFooterHeight() ?? self.tableView(tableView, heightForFooterInSection: section)
     }
     
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let sectionModel = self.sections[section]
-        guard let type = sectionModel.footerType?() else { return nil }
+        guard let type = sectionModel.footerType() else { return nil }
         
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: type.reusableIdentifier)
         if let object = (sectionModel as! Section).footerObject {
             (footer as? CellSetupable)?.configure(withAny: object)
             if let footer = footer {
-                sectionModel.footerPostConfiguration?(for: footer, of: section)
+                sectionModel.footerPostConfiguration(for: footer, of: section)
             }
         }
         return footer
