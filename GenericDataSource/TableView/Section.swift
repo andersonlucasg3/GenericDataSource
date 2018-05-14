@@ -8,26 +8,26 @@
 
 import UIKit
 
-@objc public protocol SectionProtocol: class {
+public protocol SectionProtocol: class {
     var title: String? { get set }
     var footer: String? { get set }
     
-    @objc optional func headerType() -> UITableViewHeaderFooterView.Type
-    @objc optional func headerHeight() -> CGFloat
-    @objc optional func estimatedHeaderHeight() -> CGFloat
-    @objc optional func headerPostConfiguration(for header: UITableViewHeaderFooterView, of section: Int)
+    func headerType() -> UITableViewHeaderFooterView.Type?
+    func headerHeight() -> CGFloat?
+    func estimatedHeaderHeight() -> CGFloat?
+    func headerPostConfiguration(for header: UITableViewHeaderFooterView, of section: Int)
     
-    @objc optional func footerType() -> UITableViewHeaderFooterView.Type
-    @objc optional func footerHeight() -> CGFloat
-    @objc optional func estimatedFooterHeight() -> CGFloat
-    @objc optional func footerPostConfiguration(for footer: UITableViewHeaderFooterView, of section: Int)
+    func footerType() -> UITableViewHeaderFooterView.Type?
+    func footerHeight() -> CGFloat?
+    func estimatedFooterHeight() -> CGFloat?
+    func footerPostConfiguration(for footer: UITableViewHeaderFooterView, of section: Int)
  
     func itemCount() -> Int
     
     func cellType(for index: Int) -> UITableViewCell.Type
     func cellHeight(for index: Int) -> CGFloat
     func estimatedCellHeight(for index: Int) -> CGFloat
-    @objc optional func cellPostConfiguration(for cell: UITableViewCell, at indexPath: IndexPath)
+    func cellPostConfiguration(for cell: UITableViewCell, at indexPath: IndexPath)
 }
 
 open class Section : SectionProtocol {
@@ -57,15 +57,52 @@ open class Section : SectionProtocol {
         return self.cellHeight(for: index)
     }
     
-    public func itemCount() -> Int {
+    open func itemCount() -> Int {
         return self.dataSource.getItemCount()
     }
     
-    public func itemTypeIs(type: Any.Type) -> Bool {
+    open func itemTypeIs(type: Any.Type) -> Bool {
         return self.dataSource.itemType() == type
     }
     
-    public func getItem<T>(for index: Int) -> T {
+    open func getItem<T>(for index: Int) -> T {
         return self.dataSource.getItem(for: index)
     }
+    
+    open func headerType() -> UITableViewHeaderFooterView.Type? {
+        return nil
+    }
+    
+    open func headerHeight() -> CGFloat? {
+        return nil
+    }
+    
+    open func estimatedHeaderHeight() -> CGFloat? {
+        return nil
+    }
+    
+    open func footerType() -> UITableViewHeaderFooterView.Type? {
+        return nil
+    }
+    
+    open func footerHeight() -> CGFloat? {
+        return nil
+    }
+    
+    open func estimatedFooterHeight() -> CGFloat? {
+        return nil
+    }
+    
+    open func footerPostConfiguration(for footer: UITableViewHeaderFooterView, of section: Int) {
+        
+    }
+    
+    open func cellPostConfiguration(for cell: UITableViewCell, at indexPath: IndexPath) {
+        
+    }
+    
+    open func headerPostConfiguration(for header: UITableViewHeaderFooterView, of section: Int) {
+        
+    }
+    
 }
