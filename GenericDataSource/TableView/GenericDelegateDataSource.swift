@@ -48,6 +48,16 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
         return cell
     }
     
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = self.sections[indexPath.section]
+        return section.cellHeight(for: indexPath.row)
+    }
+    
+    open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = self.sections[indexPath.section]
+        return section.estimatedCellHeight(for: indexPath.row)
+    }
+    
     open func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         let section = self.sections[indexPath.section]
         if self.delegate?.commitEditingStyle != nil {
