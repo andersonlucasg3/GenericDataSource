@@ -28,6 +28,7 @@ public protocol SectionProtocol: class {
     func cellHeight(for index: Int) -> CGFloat
     func estimatedCellHeight(for index: Int) -> CGFloat
     func cellPostConfiguration(for cell: UITableViewCell, at indexPath: IndexPath)
+    func editingStyle(for cell: UITableViewCell, at indexPath: IndexPath) -> UITableViewCellEditingStyle
 }
 
 open class Section : SectionProtocol {
@@ -55,6 +56,10 @@ open class Section : SectionProtocol {
     
     open func estimatedCellHeight(for index: Int) -> CGFloat {
         return self.cellHeight(for: index)
+    }
+    
+    open func editingStyle(for cell: UITableViewCell, at indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
     }
     
     open func itemCount() -> Int {
@@ -104,5 +109,4 @@ open class Section : SectionProtocol {
     open func headerPostConfiguration(for header: UITableViewHeaderFooterView, of section: Int) {
         
     }
-    
 }
