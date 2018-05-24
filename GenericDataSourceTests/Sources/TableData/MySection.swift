@@ -14,7 +14,7 @@ class MySection: Section {
     }
     
     override func cellHeight(for index: Int) -> CGFloat {
-        return 40
+        return self.title == "Section 1" ? 40 : 80
     }
     
     override func headerHeight() -> CGFloat? {
