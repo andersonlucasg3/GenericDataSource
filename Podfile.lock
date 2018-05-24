@@ -1,5 +1,5 @@
 PODS:
-  - GenericDataSourceSwift (0.3.0)
+  - GenericDataSourceSwift (0.4.0)
 
 DEPENDENCIES:
   - GenericDataSourceSwift (from `./`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  GenericDataSourceSwift: 4d07b35f6954fe6f6e31f55fead4558b40073a71
+  GenericDataSourceSwift: c6115666a8e171387626dafa1cc79c31679a30f8
 
 PODFILE CHECKSUM: 20283c2008679e9e3fcbb6978f2ba7b3faafe0b4
 
