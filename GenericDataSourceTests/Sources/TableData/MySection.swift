@@ -24,4 +24,8 @@ class MySection: Section {
     override func footerHeight() -> CGFloat? {
         return self.footer != nil ? 40 : 0
     }
+    
+    override func editingStyle(for cell: UITableViewCell, at indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
 }
