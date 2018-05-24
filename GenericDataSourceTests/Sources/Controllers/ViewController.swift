@@ -77,5 +77,9 @@ class ViewController: UIViewController, GenericDelegateDataSourceProtocol {
             assertionFailure("Test View Controller Not Implemented For Item: \(item)")
         }
     }
+    
+    func commitEditingStyle(at indexPath: IndexPath, editingStyle style: UITableViewCellEditingStyle) {
+        print("should \(style) for indexPath \(indexPath)")
+    }
 }
 

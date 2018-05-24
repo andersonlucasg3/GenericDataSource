@@ -8,8 +8,9 @@
 
 import UIKit
 
-public protocol GenericDelegateDataSourceProtocol: class {    
+@objc public protocol GenericDelegateDataSourceProtocol: class {
     func didSelectItem(at indexPath: IndexPath)
+    @objc optional func commitEditingStyle(at indexPath: IndexPath, editingStyle style: UITableViewCellEditingStyle)
 }
 
 open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
@@ -45,6 +46,28 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
         (cell as! CellSetupable).configure(withAny: item)
         section.cellPostConfiguration(for: cell, at: indexPath)
         return cell
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = self.sections[indexPath.section]
+        return section.cellHeight(for: indexPath.row)
+    }
+    
+    open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = self.sections[indexPath.section]
+        return section.estimatedCellHeight(for: indexPath.row)
+    }
+    
+    open func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        let section = self.sections[indexPath.section]
+        if self.delegate?.commitEditingStyle != nil {
+            return section.editingStyle(for: tableView.cellForRow(at: indexPath)!, at: indexPath)
+        }
+        return .none
+    }
+    
+    open func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        self.delegate?.commitEditingStyle?(at: indexPath, editingStyle: editingStyle)
     }
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

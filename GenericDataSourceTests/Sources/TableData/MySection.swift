@@ -14,7 +14,7 @@ class MySection: Section {
     }
     
     override func cellHeight(for index: Int) -> CGFloat {
-        return 40
+        return self.title == "Section 1" ? 40 : 80
     }
     
     override func headerHeight() -> CGFloat? {
@@ -23,5 +23,9 @@ class MySection: Section {
     
     override func footerHeight() -> CGFloat? {
         return self.footer != nil ? 40 : 0
+    }
+    
+    override func editingStyle(for cell: UITableViewCell, at indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
     }
 }
