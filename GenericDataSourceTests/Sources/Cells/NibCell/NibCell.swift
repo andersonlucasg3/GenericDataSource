@@ -1,17 +1,18 @@
 //
-//  LinearDataCell.swift
+//  NibCell.swift
 //  GenericDataSourceTests
 //
-//  Created by Anderson Lucas de Castro Ramos on 22/02/2018.
+//  Created by Jorge Luis on 08/06/2018.
 //  Copyright © 2018 Teste. All rights reserved.
 //
 
 import UIKit
 import GenericDataSourceSwift
 
-class LinearDataCell: UITableViewCell, Setupable {
+class NibCell: UITableViewCell, Setupable {
+    @IBOutlet weak var label: UILabel!
     
     func setup(with data: String) {
-        self.textLabel?.text = data
+        self.label.text = data + data
     }
 }

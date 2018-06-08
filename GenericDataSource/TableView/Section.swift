@@ -24,6 +24,7 @@ public protocol SectionProtocol: class {
  
     func itemCount() -> Int
     
+    func allCellTypes() -> [UITableViewCell.Type]
     func cellType(for index: Int) -> UITableViewCell.Type
     func cellHeight(for index: Int) -> CGFloat
     func estimatedCellHeight(for index: Int) -> CGFloat
@@ -47,11 +48,14 @@ open class Section : SectionProtocol {
     public var headerObject: Any?
     public var footerObject: Any?
     
-    public init(cellType: UITableViewCell.Type? = nil, title: String? = nil, footer: String? = nil, dataSource: DataSourceProtocol) {
+    public init(cellType: UITableViewCell.Type? = nil, title: String? = nil, footer: String? = nil, headerHeight: CGFloat? = nil, footerHeight: CGFloat? = nil, dataSource: DataSourceProtocol) {
         self.defaultCellType = cellType
+        self.defaultHeaderHeight = headerHeight
+        self.defaultFooterHeight = footerHeight
         self.title = title
         self.footer = footer
         self.dataSource = dataSource
+        self.didSetDatasource()
     }
     
     public init(cellType: UITableViewCell.Type? = nil, headerType: UITableViewHeaderFooterView.Type? = nil, footerType: UITableViewHeaderFooterView.Type? = nil, datasource: DataSourceProtocol) {
@@ -59,6 +63,11 @@ open class Section : SectionProtocol {
         self.defaultFooterType = headerType
         self.defaultFooterType = footerType
         self.dataSource = datasource
+        self.didSetDatasource()
+    }
+    
+    open func allCellTypes() -> [UITableViewCell.Type] {
+        return [self.defaultCellType].compactMap({$0})
     }
     
     open func cellType(for index: Int) -> UITableViewCell.Type {
@@ -122,6 +131,10 @@ open class Section : SectionProtocol {
     }
     
     open func headerPostConfiguration(for header: UITableViewHeaderFooterView, of section: Int) {
+        
+    }
+    
+    open func didSetDatasource() {
         
     }
 }
