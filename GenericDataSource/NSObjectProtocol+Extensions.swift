@@ -9,9 +9,12 @@
 import Foundation
 
 public extension NSObjectProtocol {
+    static var fullClassName: String {
+        return NSStringFromClass(self)
+    }
+    
     static var className: String {
-        let fullClassName = NSStringFromClass(self)
-        let comps = fullClassName.split(separator: ".")
+        let comps = self.fullClassName.split(separator: ".")
         if comps.count == 2 {
             return String.init(comps[1])
         }

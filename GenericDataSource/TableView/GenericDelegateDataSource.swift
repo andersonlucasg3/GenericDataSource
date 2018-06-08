@@ -20,10 +20,13 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
     
     public weak var delegate: GenericDelegateDataSourceProtocol?
     
-    public init(withSections sections: [SectionProtocol], andTableView tableView: UITableView) {
+    public init(withSections sections: [SectionProtocol], andTableView tableView: UITableView, setupTable: Bool = false) {
         super.init()
         self.tableView = tableView
         self.sections = sections
+        if setupTable {
+            self.setupTable(tableView, with: sections)
+        }
     }
     
     // MARK: UITableViewDataSource
@@ -128,5 +131,26 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
             }
         }
         return footer
+    }
+    
+    // MARK: Setup methods
+    
+    func setupTable(_ tableView: UITableView, with sections: [SectionProtocol]) {
+        tableView.delegate = self
+        tableView.dataSource = self
+        sections.forEach { (section) in
+            section.allCellTypes().forEach({ (cellType) in
+                let cellReuse = cellType.reusableIdentifier
+                if tableView.dequeueReusableCell(withIdentifier: cellReuse) == nil,
+                    let cellClass = NSClassFromString(cellType.fullClassName) {
+                    let bundle = Bundle.init(for: cellClass)
+                    if bundle.path(forResource: cellReuse, ofType: "nib") != nil {
+                        tableView.register(UINib.init(nibName: cellReuse, bundle: bundle), forCellReuseIdentifier: cellReuse)
+                    } else {
+                        tableView.register(cellClass, forCellReuseIdentifier: cellType.reusableIdentifier)
+                    }
+                }
+            })
+        }
     }
 }
