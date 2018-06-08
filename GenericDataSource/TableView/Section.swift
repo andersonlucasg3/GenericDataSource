@@ -24,6 +24,7 @@ public protocol SectionProtocol: class {
  
     func itemCount() -> Int
     
+    func allCellTypes() -> [UITableViewCell.Type]
     func cellType(for index: Int) -> UITableViewCell.Type
     func cellHeight(for index: Int) -> CGFloat
     func estimatedCellHeight(for index: Int) -> CGFloat
@@ -59,6 +60,10 @@ open class Section : SectionProtocol {
         self.defaultFooterType = headerType
         self.defaultFooterType = footerType
         self.dataSource = datasource
+    }
+    
+    public func allCellTypes() -> [UITableViewCell.Type] {
+        return [self.defaultCellType].compactMap({$0})
     }
     
     open func cellType(for index: Int) -> UITableViewCell.Type {

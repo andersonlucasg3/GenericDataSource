@@ -18,7 +18,7 @@ class ViewController: UIViewController, GenericDelegateDataSourceProtocol {
     @IBOutlet fileprivate weak var tableView: UITableView!
     
     fileprivate var sections: [Section]!
-    fileprivate lazy var tableViewDataSource = GenericDelegateDataSource(withSections: self.sections, andTableView: self.tableView)
+    fileprivate lazy var tableViewDataSource = GenericDelegateDataSource(withSections: self.sections, andTableView: self.tableView, setupTable: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()

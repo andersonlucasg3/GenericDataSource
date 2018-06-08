@@ -20,10 +20,13 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
     
     public weak var delegate: GenericDelegateDataSourceProtocol?
     
-    public init(withSections sections: [SectionProtocol], andTableView tableView: UITableView) {
+    public init(withSections sections: [SectionProtocol], andTableView tableView: UITableView, setupTable: Bool = false) {
         super.init()
         self.tableView = tableView
         self.sections = sections
+        if setupTable {
+            self.setupTable(tableView, with: sections)
+        }
     }
     
     // MARK: UITableViewDataSource
@@ -128,5 +131,28 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
             }
         }
         return footer
+    }
+    
+    // MARK: Setup methods
+    
+    func setupTable(_ tableView: UITableView, with sections: [SectionProtocol]) {
+        tableView.delegate = self
+        tableView.dataSource = self
+        let registeredCellClasses = tableView.value(forKey:"_cellClassDict") as? NSDictionary
+        let registeredNibs = tableView.value(forKey:"_nibMap") as? NSDictionary
+        let allRegistered = Set([registeredCellClasses,registeredNibs].compactMap({$0}).reduce([], {$0 + ($1.allKeys as? [String] ?? [])}))
+        sections.forEach { (section) in
+            section.allCellTypes().forEach({ (cellType) in
+                if !allRegistered.contains(cellType.reusableIdentifier),
+                    let cellClass = NSClassFromString(cellType.fullClassName) {
+                    let bundle = Bundle.init(for: cellClass)
+                    if bundle.path(forResource: cellType.reusableIdentifier, ofType: "nib") != nil {
+                        tableView.register(UINib.init(nibName: cellType.reusableIdentifier, bundle: bundle), forCellReuseIdentifier: cellType.reusableIdentifier)
+                    } else {
+                        tableView.register(cellClass, forCellReuseIdentifier: cellType.reusableIdentifier)
+                    }
+                }
+            })
+        }
     }
 }
