@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NibCell" id="Wfq-1c-VPW" customClass="NibCell" customModule="GenericDataSourceTests" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wfq-1c-VPW" id="uEP-vM-gbp">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell do Nib" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrJ-cS-b5b">
+                        <rect key="frame" x="5" y="0.0" width="365" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOt-3Z-YpQ">
+                        <rect key="frame" x="5" y="25" width="365" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="rrJ-cS-b5b" firstAttribute="leading" secondItem="uEP-vM-gbp" secondAttribute="leading" constant="5" id="1xw-TL-TLf"/>
+                    <constraint firstItem="rrJ-cS-b5b" firstAttribute="top" secondItem="uEP-vM-gbp" secondAttribute="top" id="2G1-gI-Jg3"/>
+                    <constraint firstAttribute="trailing" secondItem="rrJ-cS-b5b" secondAttribute="trailing" constant="5" id="6hi-oI-5jg"/>
+                    <constraint firstAttribute="trailing" secondItem="ZOt-3Z-YpQ" secondAttribute="trailing" constant="5" id="NUf-tR-Q6L"/>
+                    <constraint firstAttribute="bottom" secondItem="ZOt-3Z-YpQ" secondAttribute="bottom" constant="0.5" id="TeL-IT-s4j"/>
+                    <constraint firstItem="ZOt-3Z-YpQ" firstAttribute="leading" secondItem="uEP-vM-gbp" secondAttribute="leading" constant="5" id="Ts7-2c-OhO"/>
+                    <constraint firstItem="ZOt-3Z-YpQ" firstAttribute="top" secondItem="rrJ-cS-b5b" secondAttribute="bottom" constant="10.5" id="vPG-sV-Vax"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="label" destination="ZOt-3Z-YpQ" id="1DV-jS-onX"/>
+            </connections>
+            <point key="canvasLocation" x="91" y="-64"/>
+        </tableViewCell>
+    </objects>
+</document>

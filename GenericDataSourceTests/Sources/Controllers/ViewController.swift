@@ -33,16 +33,20 @@ class ViewController: UIViewController, GenericDelegateDataSourceProtocol {
     }
     
     fileprivate func createSections() -> [Section] {
-        let dataSource = DataSource<String>()
-        dataSource.items = [
+        let dataSource = DataSource<String>([
             linearDataSourceTestName,
             linearDataSourceWithDifferentCellsTestName,
             arraySectionDataSourceTestName,
             dictionarySectionDataSourceTestName
-        ]
+        ])
+        let datasource2 = DataSource<String>(Array(dataSource.items.reversed()))
+        let datasource3 = DataSource<[String]>([dataSource.items,
+                                                dataSource.items,
+                                                dataSource.items])
         return [
-            MySection(title: "Section 1", dataSource: dataSource),
-            MySection(title: "Section 2", footer: "Footer 2", dataSource: dataSource)
+            MySection(title: "Section 1", footer: "Footer 1", dataSource: dataSource),
+            MySection(dataSource: datasource2),
+            Section.init(cellType: PureCodeCell.self, title: "Section3", headerHeight: 20, dataSource: datasource3)
         ]
     }
     
@@ -73,8 +77,8 @@ class ViewController: UIViewController, GenericDelegateDataSourceProtocol {
         case dictionarySectionDataSourceTestName:
             // open view controller
             break
-        default:
-            assertionFailure("Test View Controller Not Implemented For Item: \(item)")
+        default: return
+            //assertionFailure("Test View Controller Not Implemented For Item: \(item)")
         }
     }
     
