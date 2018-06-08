@@ -32,22 +32,37 @@ public protocol SectionProtocol: class {
 }
 
 open class Section : SectionProtocol {
-    fileprivate var dataSource: DataSourceProtocol
+    public fileprivate(set) var dataSource: DataSourceProtocol
     
     public var title: String?
     public var footer: String?
+
+    public var defaultCellType: UITableViewCell.Type?
+    public var defaultHeaderType: UITableViewHeaderFooterView.Type?
+    public var defaultFooterType: UITableViewHeaderFooterView.Type?
+    
+    public var defaultHeaderHeight: CGFloat? = nil
+    public var defaultFooterHeight: CGFloat? = nil
     
     public var headerObject: Any?
     public var footerObject: Any?
     
-    public required init(title: String? = nil, footer: String? = nil, dataSource: DataSourceProtocol) {
+    public init(cellType: UITableViewCell.Type? = nil, title: String? = nil, footer: String? = nil, dataSource: DataSourceProtocol) {
+        self.defaultCellType = cellType
         self.title = title
         self.footer = footer
         self.dataSource = dataSource
     }
     
+    public init(cellType: UITableViewCell.Type? = nil, headerType: UITableViewHeaderFooterView.Type? = nil, footerType: UITableViewHeaderFooterView.Type? = nil, datasource: DataSourceProtocol) {
+        self.defaultCellType = cellType
+        self.defaultFooterType = headerType
+        self.defaultFooterType = footerType
+        self.dataSource = datasource
+    }
+    
     open func cellType(for index: Int) -> UITableViewCell.Type {
-        return UITableViewCell.self
+        return self.defaultCellType ?? UITableViewCell.self
     }
     
     open func cellHeight(for index: Int) -> CGFloat {
@@ -75,27 +90,27 @@ open class Section : SectionProtocol {
     }
     
     open func headerType() -> UITableViewHeaderFooterView.Type? {
-        return nil
+        return self.defaultHeaderType
     }
     
     open func headerHeight() -> CGFloat? {
-        return nil
+        return self.defaultHeaderHeight
     }
     
     open func estimatedHeaderHeight() -> CGFloat? {
-        return nil
+        return self.defaultHeaderHeight
     }
     
     open func footerType() -> UITableViewHeaderFooterView.Type? {
-        return nil
+        return self.defaultFooterType
     }
     
     open func footerHeight() -> CGFloat? {
-        return nil
+        return self.defaultFooterHeight
     }
     
     open func estimatedFooterHeight() -> CGFloat? {
-        return nil
+        return self.defaultFooterHeight
     }
     
     open func footerPostConfiguration(for footer: UITableViewHeaderFooterView, of section: Int) {

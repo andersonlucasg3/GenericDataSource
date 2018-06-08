@@ -15,10 +15,10 @@ public protocol DataSourceProtocol {
 }
 
 open class DataSource<DataType>: DataSourceProtocol {
-    public var items: [DataType]!
+    public var items: [DataType]
     
-    public init() {
-        
+    public init(_ items: [DataType] = []) {
+        self.items = items
     }
     
     public func itemType() -> Any.Type {
@@ -30,6 +30,10 @@ open class DataSource<DataType>: DataSourceProtocol {
     }
     
     open func getItem<T>(for index: Int) -> T {
-        return self.items![index] as! T
+        return self.items[index] as! T
+    }
+    
+    open func getItem(at index: Int) -> DataType {
+        return self.getItem(for: index)
     }
 }
