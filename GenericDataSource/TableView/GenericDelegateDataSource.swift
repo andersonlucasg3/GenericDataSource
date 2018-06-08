@@ -140,11 +140,12 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
         tableView.dataSource = self
         sections.forEach { (section) in
             section.allCellTypes().forEach({ (cellType) in
-                if tableView.dequeueReusableCell(withIdentifier: cellType.reusableIdentifier) == nil,
+                let cellReuse = cellType.reusableIdentifier
+                if tableView.dequeueReusableCell(withIdentifier: cellReuse) == nil,
                     let cellClass = NSClassFromString(cellType.fullClassName) {
                     let bundle = Bundle.init(for: cellClass)
-                    if bundle.path(forResource: cellType.reusableIdentifier, ofType: "nib") != nil {
-                        tableView.register(UINib.init(nibName: cellType.reusableIdentifier, bundle: bundle), forCellReuseIdentifier: cellType.reusableIdentifier)
+                    if bundle.path(forResource: cellReuse, ofType: "nib") != nil {
+                        tableView.register(UINib.init(nibName: cellReuse, bundle: bundle), forCellReuseIdentifier: cellReuse)
                     } else {
                         tableView.register(cellClass, forCellReuseIdentifier: cellType.reusableIdentifier)
                     }
