@@ -138,12 +138,9 @@ open class GenericDelegateDataSource: NSObject, UITableViewDelegate, UITableView
     func setupTable(_ tableView: UITableView, with sections: [SectionProtocol]) {
         tableView.delegate = self
         tableView.dataSource = self
-        let registeredCellClasses = tableView.value(forKey:"_cellClassDict") as? NSDictionary
-        let registeredNibs = tableView.value(forKey:"_nibMap") as? NSDictionary
-        let allRegistered = Set([registeredCellClasses,registeredNibs].compactMap({$0}).reduce([], {$0 + ($1.allKeys as? [String] ?? [])}))
         sections.forEach { (section) in
             section.allCellTypes().forEach({ (cellType) in
-                if !allRegistered.contains(cellType.reusableIdentifier),
+                if tableView.dequeueReusableCell(withIdentifier: cellType.reusableIdentifier) == nil,
                     let cellClass = NSClassFromString(cellType.fullClassName) {
                     let bundle = Bundle.init(for: cellClass)
                     if bundle.path(forResource: cellType.reusableIdentifier, ofType: "nib") != nil {
